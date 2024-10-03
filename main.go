@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"net/http"
+	"os"
 	"sync"
 	"time"
 
@@ -33,9 +33,9 @@ func main() {
 	wg.Wait()
 }
 
-// Read the URLs from the YAML file
+// Read the URLs from the YAML file using `os.ReadFile`
 func readConfig(filename string) (*Config, error) {
-	data, err := ioutil.ReadFile(filename)
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
